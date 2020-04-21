@@ -21,7 +21,8 @@ DUPEFILTER_CLASS = 'scrapy.dupefilters.BaseDupeFilter'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
-
+LOG_ENABLED = True
+LOG_LEVEL = 'DEBUG'
 # Configure maximum concurrent requests performed by Scrapy (default: 16)
 #CONCURRENT_REQUESTS = 32
 
@@ -48,7 +49,7 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See http://scrapy.readthedocs.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    'fifa_parser.middlewares.SofifaParserSpiderMiddleware': 543,
+#    'fifa_parser.middlewares.fifaParserSpiderMiddleware': 543,
 #}
 
 # Enable or disable downloader middlewares
@@ -69,7 +70,7 @@ ITEM_PIPELINES = {
 }
 # See http://scrapy.readthedocs.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    'fifa_parser.pipelines.SofifaParserPipeline': 300,
+#    'fifa_parser.pipelines.fifaParserPipeline': 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
