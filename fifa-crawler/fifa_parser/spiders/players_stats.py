@@ -21,18 +21,18 @@ class SofifaSpider(scrapy.Spider):
     def parse(self, response):
         for player in response.css('.info'):
             player_info = player.xpath('//div[@class="info"]//span/text()').getall()
-            player_url_photo = player.xpath('//div[@class="player"]//img/@data-src')[0].getall()
+            player_url_photo = player.xpath('//div[@class="bp3-card player" ]//img/@data-src')[0].getall()
             player_info = [info for info in player_info if info != ' ']
-            player_stats = player.xpath('//tr//td[@class="text-center"]/text()').re(r'[\w ]+')
-            player_stats_values = player.xpath('//tr//td[@class="text-center"]//span/text()').getall()
-            player_teams = player.xpath('//div[@class="teams"]//tr//td//ul//li//label/text()').getall()
-            player_teams_values = player.xpath('//div[@class="teams"]//tr//td//ul//li/text()').re(r'\w+')
+            player_stats = player.xpath('//div[@class="bp3-card double-spacing"]//ul//li/span[2]//text()').re(r'[\w ]+')
+            player_stats_values = player.xpath('//div[@class="bp3-card double-spacing"]//ul//li/span[1]//text()').getall()
+            player_teams = player.xpath('//div[@class="player-card double-spacing"]//h5//a/text()').getall()
+            player_teams_values = player.xpath('//div[@class="player-card double-spacing"]//ul//li[1]//span[1]/text()').re(r'\w+')
 
-            #remove some atributes from player team and national team
-            player_teams = player_teams[:8]
-            player_teams_values = player_teams_values[:4]
-            player_teams_values.extend(player.xpath('//div[@class="teams"]//tr//td//ul//li//span/text()').getall())
-            player_teams_values = player_teams_values[:8]
+            # Adds the goalkeeper stat_names
+            player_stats = player_stats.extend(player.xpath('//div[@class="bp3-card double-spacing" and h5="Goalkeeping"]//ul//li/text()').getall())
+            
+            #removes info from profile area and traits, keeping it pure values
+            player_stats_values = player_stats_values[7:41]
 
             ###########################################################
 
