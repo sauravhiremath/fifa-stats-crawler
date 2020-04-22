@@ -8,7 +8,7 @@ class SofifaSpider(scrapy.Spider):
 
 	def start_requests(self):
 		urls = [
-		'https://sofifa.com/players'
+		'https://sofifa.com/players?col=oa&sort=desc&offset=0'
 		]
 
 		for url in urls:
@@ -16,19 +16,21 @@ class SofifaSpider(scrapy.Spider):
 
 	def parse(self, response):
 		print(self.pages)
-		for player in response.css('tbody>tr'):
-			player_link = player.xpath('.//a/@href').re(r'/player/\w+')
-			if len(player_link)	> 0:
+		for player in response.css('.col-name'):
+			player_links = player.xpath('a/@href').re(r'/player/\w+')
+			if len(player_links) > 0:
 				yield {
-					'player_url': player_link[0]
+					'player_url': player_links[0]
 				}
 
-		next_page = response.xpath('.//a[@class="bp3-button pjax" and span//text()="Next"]/@href').getall()
-		if next_page:
-			if len(next_page) == 1:
-				next_href = next_page[0]
-			else:
-				next_href = next_page[1]
+		offset = response.url[51:]
+		print('************************************ ' + 'offset is ' + str(offset))
+		end_offset = '19640'
+		# These offsets dont have next buttons. Fk em
+		# bad_offsets = [360, 1020, 1440, 1620, 1680, 1920, 2220, 2340, 2400]
+
+		if offset != strend_offset:
+			next_href = '/players?col=oa&sort=desc&offset=' + str(int(offset)+60)
 			next_page_url = 'https://sofifa.com' + next_href
 			self.pages += 1
 			request = scrapy.Request(url=next_page_url)
