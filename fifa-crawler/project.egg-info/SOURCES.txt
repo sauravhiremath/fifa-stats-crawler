@@ -1,0 +1,14 @@
+setup.py
+fifa_parser/__init__.py
+fifa_parser/items.py
+fifa_parser/middlewares.py
+fifa_parser/pipelines.py
+fifa_parser/settings.py
+fifa_parser/spiders/__init__.py
+fifa_parser/spiders/players_stats.py
+fifa_parser/spiders/players_url.py
+project.egg-info/PKG-INFO
+project.egg-info/SOURCES.txt
+project.egg-info/dependency_links.txt
+project.egg-info/entry_points.txt
+project.egg-info/top_level.txt
