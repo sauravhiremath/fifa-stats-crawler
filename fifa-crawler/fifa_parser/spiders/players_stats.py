@@ -1,8 +1,6 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import json
-import logging
-from pprint import pformat
 
 class SofifaSpider(scrapy.Spider):
     name='players_stats'
@@ -104,6 +102,7 @@ class SofifaSpider(scrapy.Spider):
             player_hashtags = {'player_hashtags': ','.join(player_tags)}
             player_info_dict.update(player_hashtags)
 
+            print('*****************************************     ' + str(self.player_count) + '\n\n\n')
             # logging.info(pformat(player_info_dict))
             yield player_info_dict
 
