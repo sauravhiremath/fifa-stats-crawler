@@ -7,7 +7,7 @@ class SofifaSpider(scrapy.Spider):
     name='players_stats'
 
     def __init__(self):
-        with open('../data/json/players_url.json') as json_data:
+        with open('./data/json/players_url.json') as json_data:
             self.players = json.load(json_data)
         self.player_count = 1
 
