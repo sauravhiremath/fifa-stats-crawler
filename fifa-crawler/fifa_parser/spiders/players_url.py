@@ -8,7 +8,7 @@ class SofifaSpider(scrapy.Spider):
 
 	def start_requests(self):
 		urls = [
-		'https://sofifa.com/players?col=oa&sort=desc&offset=0'
+			'https://sofifa.com/players?col=oa&sort=desc&offset=0'
 		]
 
 		for url in urls:
@@ -26,10 +26,11 @@ class SofifaSpider(scrapy.Spider):
 		offset = response.url[51:]
 		print('************************************ ' + 'offset is ' + str(offset))
 		end_offset = '19640'
+
 		# These offsets dont have next buttons. Fk em
 		# bad_offsets = [360, 1020, 1440, 1620, 1680, 1920, 2220, 2340, 2400]
 
-		if offset != strend_offset:
+		if offset != str(end_offset):
 			next_href = '/players?col=oa&sort=desc&offset=' + str(int(offset)+60)
 			next_page_url = 'https://sofifa.com' + next_href
 			self.pages += 1

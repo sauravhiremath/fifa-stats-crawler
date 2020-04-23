@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import scrapy
 import json
+import logging
 
 class SofifaSpider(scrapy.Spider):
     name='players_stats'
@@ -12,7 +13,7 @@ class SofifaSpider(scrapy.Spider):
 
     def start_requests(self):
         urls = [
-            'https://sofifa.com/player/158023?units=mks'
+            'https://sofifa.com/player/158023?units=mks' # ---> Messi example page
         ]
 
         for url in urls:
@@ -25,29 +26,33 @@ class SofifaSpider(scrapy.Spider):
             player_info = [info for info in player_info if info != ' ']
             player_info = player_info + (player.xpath('//div[@class="meta bp3-text-overflow-ellipsis"]/span/text()').getall())
             player_url_photo = player.xpath('//div[@class="bp3-card player" ]//img/@data-src').getall()[0]
+
             # Add stats_names and values (Crossing, finishing) + goalkeeper stats_names and values (GK Diving, GK Reflexes)
             player_stats = player.xpath('//div[@class="bp3-card double-spacing"]//ul//li/span[2]//text()').re(r'[\w ]+')
             player_stats.insert(-3, player.xpath('//div[@class="bp3-card double-spacing"]//ul//li[text()=" Composure"]/text()').get()[1:])
             player_stats = player_stats + player.xpath('//div[@class="bp3-card double-spacing" and h5="Goalkeeping"]//ul//li/text()').getall()
-            player_stats_values = player.xpath('//div[@class="bp3-card double-spacing"]//ul//li/span[1]//text()').getall()[7:41]
+            player_stats_values = player.xpath('//div[@class="bp3-card double-spacing" and h5 !="Profile"]/ul//li/span[1]//text()').getall()[:34]
+
             # Overall rating, potential rating + value, wage names and values
             primary_stats = player.xpath('//div[@class="sub"]//text()').getall()
             primary_stats_values = player.xpath('//section[@class="spacing"]/div/div[@class = "column col-3"]/div/span/text()').getall()
             primary_stats_values = primary_stats_values + [stat for stat in player.xpath('//section[@class="spacing"]/div/div/div[not (@class)]/text()').getall() if stat != ' ']
+            
             # Add the club and nationality names and the respective team rating
             player_teams = player.xpath('//div[@class="player-card double-spacing"]//h5//a/text()').getall()
             player_teams_values = player.xpath('//div[@class="player-card double-spacing"]//ul//li[1]//span[1]/text()').re(r'\w+')
+
             # Add profile stats (Prefeered foot, Weak Foot, International Reputation) and its values
             player_profile_stats = player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//label/text()').getall()
             player_profile_values = player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//li/text()').getall()
             player_profile_values = [val for val in player_profile_values if val != ' ']
             player_profile_values = player_profile_values + (player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//li/span[not (@class)]/text()').getall())
 
-            ###########################################################
-
             # Add player specialities (#Acrobat, #Dribbler) and Traits (Finesse shot, Playmaker)
             player_tags = player.xpath('//div[@class="bp3-card double-spacing" and h5="Player Specialities"]//ul//li//a/text()').getall()
             player_traits = player.xpath('//div[@class="bp3-card double-spacing" and h5="Traits"]//ul//li//text()').getall()
+
+            ###########################################################
 
             # Age 30 (Jun 24, 1987) 170cm 72kg'
             age, month, day, year, height, weight = player_info[0].split()
@@ -69,7 +74,7 @@ class SofifaSpider(scrapy.Spider):
 
             teams = {'teams':{k:int(v) for k, v in zip(player_teams, player_teams_values)}}
 
-            #skills
+            # skills
             attacking = {'attacking':{k.replace(' ', ''):int(v) for k, v in zip(player_stats[:5], player_stats_values[:5])}}
             skill = {'skill':{k.replace(' ', ''):int(v) for k, v in zip(player_stats[5:10], player_stats_values[5:10])}}
             movement = {'movement':{k.replace(' ', ''):int(v) for k, v in zip(player_stats[10:15], player_stats_values[10:15])}}
@@ -102,8 +107,7 @@ class SofifaSpider(scrapy.Spider):
             player_hashtags = {'player_hashtags': ','.join(player_tags)}
             player_info_dict.update(player_hashtags)
 
-            print('*****************************************     ' + str(self.player_count) + '\n\n\n')
-            # logging.info(pformat(player_info_dict))
+            logging.info('*****************************************     ' + str(self.player_count) + '\n\n\n')
             yield player_info_dict
 
             if self.player_count < len(self.players):
