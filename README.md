@@ -26,11 +26,11 @@ Further exported to the [Fifa Custom Team Builder Backend](https://github.com/sa
 
     * First run the URL spider (To get all players urls)
         ```python
-            scrapy crawl players_url
+        scrapy crawl players_url
         ```
     * After successfull, run the stats spider (To get the players statistics from URLs from above)
         ```python
-            scrapy crawl players_stats
+        scrapy crawl players_stats
         ```
 
 
