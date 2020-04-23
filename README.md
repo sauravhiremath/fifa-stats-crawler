@@ -1,35 +1,35 @@
-# Fifa 20 crawler
+# Fifa 20 Players Stats Crawler
 
-This project is a sub-module of [Fifa Custom Team Builder](https://github.com/sauravhiremath/fifa).<br>
+This project is a sub-module for [Fifa Custom Team Builder](https://github.com/sauravhiremath/fifa).<br>
 
 # About
 
-A web-crawler to scrape all football players' information from [Sofifa](https://sofifa.com/players) and pre-processess it to JSON format. And analytics on the obtained data<br><br>
+A web-crawler to scrape all football players' information from [Sofifa](https://sofifa.com/players) and exporting it to JSON format. Perform data cleaning and analytics on the obtained data<br><br>
 
 * Crawler: Built on scrapy using python3
 * Analytics: IPynb noteboook python3
 
-Further exported to the [Fifa Custom Team Builder Backend](https://github.com/sauravhiremath/fifa-api) backend to serve as an API.
+Further exported to the [Fifa Custom Team Builder Backend](https://github.com/sauravhiremath/fifa-api) to serve as an API.
 
 # Steps to run the project
 
 
 * Install project dependencies <br>
-    ``` python
-        pip install -r requirements.txt
+    ```python
+    pip install -r requirements.txt
     ```
 
-* Run the crawler from `fifa-crawler` as current directory (This the main scrapy crawler directory)
-    > Make sure to change the filenames to read and write appropriately: \n
-    > `players_url.json` --> scraping urls
+* Run the crawler with _./fifa-crawler_ as current directory (This the main scrapy crawler directory)
+    > Make sure to change the filenames to read and write appropriately: <br>
+    > `players_url.json` --> scraping urls <br>
     > `players_stats_raw.json` --> scraping player stats
 
-    * First run the players url spider
-        ``` python
+    * First run the URL spider (To get all players urls)
+        ```python
             scrapy crawl players_url
         ```
-    * After successfull, run the stats spider
-        ``` python
+    * After successfull, run the stats spider (To get the players statistics from URLs from above)
+        ```python
             scrapy crawl players_stats
         ```
 
