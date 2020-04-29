@@ -832,7 +832,7 @@ function latinize (fileStr) {
 }
 
 function main() {
-    const rawdata = fs.readFileSync('../data/json/players_stats_raw.json');
+    const rawdata = fs.readFileSync('../data/json/players_stats_modified.json', 'utf-8');
     console.log('[*] Read players JSON file.');
 
     const raw_players_str = JSON.stringify(JSON.parse(rawdata));
