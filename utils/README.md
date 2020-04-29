@@ -1,4 +1,4 @@
-# Data pre-processing on players_stats_raw.json
+# Data pre-processing on players_stats_modified.json
 
 ## To prettify the jsons (Optional)
 
