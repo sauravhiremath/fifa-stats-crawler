@@ -1,18 +1,17 @@
-# Fifa 20 Players Stats Crawler
+# Football Players Statistics WebCrawler
 
-This project is a sub-module for [Fifa Custom Team Builder](https://github.com/sauravhiremath/fifa).<br>
+This project is a sub-module for [Multiplayer Football Draft Simulator](https://github.com/sauravhiremath/fifa).
 
 # About
 
-A web-crawler to scrape all football players' information from [Sofifa](https://sofifa.com/players) and exporting it to JSON format. Perform data cleaning and analytics on the obtained data<br><br>
+A web-crawler to scrape all football players' information from [Sofifa](https://sofifa.com/players) and exporting it to JSON format. Perform data cleaning and analytics on the obtained data
 
 * Crawler: Built on scrapy using python3
 * Analytics: IPynb noteboook python3
 
-Further exported to the [Fifa Custom Team Builder Backend](https://github.com/sauravhiremath/fifa-api) to serve as an API.
+Further exported to the [Football Draft Backend](https://github.com/sauravhiremath/fifa-api) to serve from an endpoint
 
 # Steps to run the project
-
 
 * Install project dependencies <br>
     ```python
