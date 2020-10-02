@@ -1,12 +1,14 @@
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]()
+[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 # Football Players Statistics WebCrawler
 
 This project is a sub-module for [Multiplayer Football Draft Simulator](https://github.com/sauravhiremath/fifa).
 
 # About
-
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 A web-crawler to scrape all football players' information from [Sofifa](https://sofifa.com/players) and exporting it to JSON format. Perform data cleaning and analytics on the obtained data
 
@@ -25,7 +27,7 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
 
 - Run the crawler with _./fifa-crawler_ as current directory (This the main scrapy crawler directory)
 
-  > Make sure to change the filenames to read and write appropriately: <br> > `players_url.json` --> scraping urls <br> > `players_stats_raw.json` --> scraping player stats
+  > Make sure to change the filenames to read and write appropriately: <br/> >`players_url.json` --> scraping urls <br/> `players_stats_raw.json` --> scraping player stats
 
   - First run the URL spider (To get all players urls)
     ```python
