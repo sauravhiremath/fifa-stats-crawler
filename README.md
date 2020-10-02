@@ -27,7 +27,8 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
 
 - Run the crawler with _./fifa-crawler_ as current directory (This the main scrapy crawler directory)
 
-  > Make sure to change the filenames to read and write appropriately: <br/> >`players_url.json` --> scraping urls <br/> `players_stats_raw.json` --> scraping player stats
+  > Make sure to change the filenames to read and write appropriately: <br/> 
+  >`players_url.json` --> scraping urls <br/> `players_stats_raw.json` --> scraping player stats
 
   - First run the URL spider (To get all players urls)
     ```python
