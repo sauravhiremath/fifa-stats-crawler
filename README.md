@@ -1,8 +1,7 @@
-[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
+[![Python supported versions](https://img.shields.io/pypi/pyversions/scrapy?style=for-the-badge)](https://www.python.org/) 
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg?style=for-the-badge)](http://perso.crans.org/besson/LICENSE.html) 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)](https://github.com/sauravhiremath/fifa-api/issues)
 
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)]()
-[![Open Source Love](https://badges.frapsoft.com/os/v3/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
 
 # Football Players Statistics WebCrawler
 
@@ -27,8 +26,9 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
 
 - Run the crawler with _./fifa-crawler_ as current directory (This the main scrapy crawler directory)
 
-  > Make sure to change the filenames to read and write appropriately: <br/> 
-  >`players_url.json` --> scraping urls <br/> `players_stats_raw.json` --> scraping player stats
+  Make sure to change the filenames to read and write appropriately: <br/> 
+  > `players_url.json` --> scraping urls <br/> 
+  > `players_stats_raw.json` --> scraping player stats
 
   - First run the URL spider (To get all players urls)
     ```python
