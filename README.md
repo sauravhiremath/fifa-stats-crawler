@@ -11,6 +11,32 @@ A web-crawler to scrape all football players' information from [Sofifa](https://
 
 Further exported to the [Football Draft Backend](https://github.com/sauravhiremath/fifa-api) to serve from an endpoint
 
+## Built With
+
+* [Python 3](https://www.python.org/download/releases/3.0/)
+* [Javascript](https://www.javascript.com/)
+* [Scrapy](https://scrapy.org/)
+* [ipynb](https://pypi.org/project/ipynb/)
+
+## Contributing
+
+Contributions are what make the open source community such an amazing place to be learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+
+1. Fork the Project
+2. Create your Feature Branch 
+```md
+   git checkout -b feature/AmazingFeature
+```
+3. Commit your Changes 
+```md
+   git commit -m 'Add some AmazingFeature'
+```
+4. Push to the Branch
+```md
+   git push origin feature/AmazingFeature
+``` 
+5. Open a Pull Request
+
 # Steps to run the project
 
 * Install project dependencies <br>
