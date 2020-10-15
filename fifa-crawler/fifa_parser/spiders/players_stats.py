@@ -72,7 +72,7 @@ class SofifaSpider(scrapy.Spider):
                     player_logos_urls.update({'club': club})
 
             # Add player most played position
-            player_best_position = player.xpath('//div[@class="columns right"]/div[@class="column col-4"]//div[@class="double-spacing"]//span/text()').get()
+            player_primary_position = player.xpath('//div[@class="columns right"]/div[@class="column col-4"]//div[@class="double-spacing"]//span/text()').get()
 
 
             ###########################################################
@@ -133,7 +133,7 @@ class SofifaSpider(scrapy.Spider):
             player_info_dict.update(player_hashtags)
             player_logos_dict = {'logos': player_logos_urls}
             player_info_dict.update(player_logos_dict)
-            player_best_pos_dict = {'primary_position': player_best_position}
+            player_best_pos_dict = {'primary_position': player_primary_position}
             player_info_dict.update(player_best_pos_dict)
 
             logging.info('*****************************************     ' + str(self.player_count) + '\n\n\n')
