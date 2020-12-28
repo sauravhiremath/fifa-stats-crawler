@@ -66,7 +66,7 @@ chmod +x ./run.sh
 # Metadata
 
 <details>
-  <summary>Click here to expand meta view, or <a href="https://github.com/sauravhiremath/fifa-stats-crawler/blob/master/data/meta/meta.md">go-here</a> for a detailed view</summary>
+  <summary>Click here to expand meta view, or <a href="https://github.com/sauravhiremath/fifa-stats-crawler/blob/master/data/metadata/meta.md">go-here</a> for a detailed view</summary>
 
   <details>
   <summary>id</summary>
