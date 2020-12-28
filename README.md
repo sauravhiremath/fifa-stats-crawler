@@ -13,6 +13,11 @@ Further exported to the [Fifa Custom Team Builder Backend](https://github.com/sa
 
 # Steps to run the project
 
+* Setup virtualenv (optional, but recommended)
+  ```
+  virtualenv -p python3.6 env
+  source env/bin/activate
+  ```
 
 * Install project dependencies <br>
     ```python
