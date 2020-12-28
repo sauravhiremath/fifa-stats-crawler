@@ -10,12 +10,8 @@ from scrapy.exporters import JsonItemExporter
 
 class JsonPipeline(object):
     def open_spider(self, spider):
-        if spider.name == 'players_stats':
-            self.file = open("../data/json/players_stats.json", 'wb')
-        elif spider.name == 'players_url':
-            self.file = open("../data/json/players_url.json", 'wb')
-        self.exporter = JsonItemExporter(
-            self.file, encoding='utf-8', ensure_ascii=False)
+        self.file = open("../data/json/" + spider.name + ".json", 'wb')
+        self.exporter = JsonItemExporter(self.file, encoding='utf-8', ensure_ascii=False)
         self.exporter.start_exporting()
 
     def close_spider(self, spider):
