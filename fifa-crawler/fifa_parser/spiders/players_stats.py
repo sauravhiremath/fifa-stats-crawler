@@ -7,7 +7,7 @@ class SofifaSpider(scrapy.Spider):
     name='players_stats'
 
     def __init__(self):
-        with open('../data/json/players_url.json') as json_data:
+        with open('../data/json/players_url_dev.json') as json_data:
             self.players = json.load(json_data)
         self.player_count = 1
 
@@ -28,29 +28,29 @@ class SofifaSpider(scrapy.Spider):
             player_url_photo = player.xpath('//div[@class="bp3-card player" ]//img/@data-src').getall()[0]
 
             # Add stats_names and values (Crossing, finishing) + goalkeeper stats_names and values (GK Diving, GK Reflexes)
-            player_stats = player.xpath('//div[@class="bp3-card double-spacing"]//ul//li/span[2]//text()').re(r'[\w ]+')
-            player_stats.insert(-3, player.xpath('//div[@class="bp3-card double-spacing"]//ul//li[text()=" Composure"]/text()').get()[1:])
-            player_stats = player_stats + player.xpath('//div[@class="bp3-card double-spacing" and h5="Goalkeeping"]//ul//li/text()').getall()
-            player_stats_values = player.xpath('//div[@class="bp3-card double-spacing" and h5 !="Profile"]/ul//li/span[1]//text()').getall()[:34]
+            player_stats = player.xpath('//div[@class="card"]//ul//li/span[2]//text()').re(r'[\w ]+')
+            player_stats.insert(-3, player.xpath('//div[@class="card"]//ul//li[text()=" Composure"]/text()').get()[1:])
+            player_stats = player_stats + player.xpath('//div[@class="card" and h5="Goalkeeping"]//ul//li/text()').getall()
+            player_stats_values = player.xpath('//div[@class="card" and h5 !="Profile" and h5 != "Traits"]/ul//li/span[1]//text()').getall()[-34:]
 
             # Overall rating, potential rating + value, wage names and values
             primary_stats = player.xpath('//div[@class="sub"]//text()').getall()
-            primary_stats_values = player.xpath('//section[@class="spacing"]/div/div[@class = "column col-3"]/div/span/text()').getall()
-            primary_stats_values = primary_stats_values + [stat for stat in player.xpath('//section[@class="spacing"]/div/div/div[not (@class)]/text()').getall() if stat != ' ']
+            primary_stats_values = player.xpath('//section[@class="card spacing"]/div/div[@class = "column col-3"]/div/span/text()').getall()
+            primary_stats_values = primary_stats_values + [stat for stat in player.xpath('//section[@class="card spacing"]/div/div/div[not (@class)]/text()').getall() if stat != ' ']
             
             # Add the club and nationality names and the respective team rating
-            player_teams = player.xpath('//div[@class="player-card double-spacing"]//h5//a/text()').getall()
-            player_teams_values = player.xpath('//div[@class="player-card double-spacing"]//ul//li[1]//span[1]/text()').re(r'\w+')
+            player_teams = player.xpath('//div[@class="card"]//h5//a/text()').getall()
+            player_teams_values = player.xpath('///div[@class="card"]//ul[contains(@class,"pl text-right")]//li[1]//span[1]/text()').re(r'\w+')
 
             # Add profile stats (Prefeered foot, Weak Foot, International Reputation) and its values
-            player_profile_stats = player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//label/text()').getall()
-            player_profile_values = player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//li/text()').getall()
+            player_profile_stats = player.xpath('//div[@class="card" and h5="Profile"]//label/text()').getall()
+            player_profile_values = player.xpath('//div[@class="card" and h5="Profile"]//li[label != "ID"]/text()').getall()
             player_profile_values = [val for val in player_profile_values if val != ' ']
-            player_profile_values = player_profile_values + (player.xpath('//div[@class="bp3-card double-spacing" and h5="Profile"]//li/span[not (@class)]/text()').getall())
+            player_profile_values = player_profile_values + (player.xpath('//div[@class="card" and h5="Profile"]//li/span[not (@class)]/text()').getall())
 
             # Add player specialities (#Acrobat, #Dribbler) and Traits (Finesse shot, Playmaker)
-            player_tags = player.xpath('//div[@class="bp3-card double-spacing" and h5="Player Specialities"]//ul//li//a/text()').getall()
-            player_traits = player.xpath('//div[@class="bp3-card double-spacing" and h5="Traits"]//ul//li//text()').getall()
+            player_tags = player.xpath('//div[@class="card" and h5="Player Specialities"]//ul//li//a/text()').getall()
+            player_traits = player.xpath('//div[@class="card" and h5="Traits"]//ul//li//text()').getall()
 
             ###########################################################
 
@@ -86,7 +86,7 @@ class SofifaSpider(scrapy.Spider):
             player_info_dict = {
                     'name': player_name,
                     'photo_url': player_url_photo,
-                    'positions': ','.join([position for position in player_info[1:] if position.isupper()]),
+                    'positions': [position for position in player_info[1:] if position.isupper()],
                     'age': age,
                     'birth_date': '{}/{}/{}'.format(year, month, day),
                     'height': height,
@@ -102,12 +102,12 @@ class SofifaSpider(scrapy.Spider):
             player_info_dict.update(mentality)
             player_info_dict.update(defending)
             player_info_dict.update(goalkeeping)
-            player_skills_dict = {'player_traits': ','.join(player_traits)}
+            player_skills_dict = {'player_traits': player_traits}
             player_info_dict.update(player_skills_dict)
-            player_hashtags = {'player_hashtags': ','.join(player_tags)}
+            player_hashtags = {'player_hashtags': player_tags}
             player_info_dict.update(player_hashtags)
 
-            logging.info('*****************************************     ' + str(self.player_count) + '\n\n\n')
+            logging.info('*******************  ' + str(self.player_count) + '  *******************' + '\n\n\n')
             yield player_info_dict
 
             if self.player_count < len(self.players):
