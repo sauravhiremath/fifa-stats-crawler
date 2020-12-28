@@ -7,9 +7,12 @@ class SofifaSpider(scrapy.Spider):
     name='players_stats'
 
     def __init__(self):
-        with open('../data/json/players_url_dev.json') as json_data:
-            self.players = json.load(json_data)
-        self.player_count = 1
+        try:
+            with open('../data/json/players_urls.json') as json_data:
+                self.players = json.load(json_data)
+            self.player_count = 1
+        except IOError:
+            logging.error('Error: File does not appear to exist. \n Try running `scrapy crawl players_urls` if not run before.')
 
     def start_requests(self):
         urls = [
