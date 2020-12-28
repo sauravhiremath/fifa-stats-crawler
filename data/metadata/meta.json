@@ -1,0 +1,347 @@
+{
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "short_name": {
+      "type": "string"
+    },
+    "photo_url": {
+      "type": "string"
+    },
+    "primary_position": {
+      "type": "string"
+    },
+    "positions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "age": {
+      "type": "string"
+    },
+    "birth_date": {
+      "type": "string"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "weight": {
+      "type": "integer"
+    },
+    "Overall Rating": {
+      "type": "integer"
+    },
+    "Potential": {
+      "type": "integer"
+    },
+    "Value": {
+      "type": "string"
+    },
+    "Wage": {
+      "type": "string"
+    },
+    "Preferred Foot": {
+      "type": "string"
+    },
+    "Weak Foot": {
+      "type": "integer"
+    },
+    "Skill Moves": {
+      "type": "integer"
+    },
+    "International Reputation": {
+      "type": "integer"
+    },
+    "Work Rate": {
+      "type": "string"
+    },
+    "Body Type": {
+      "type": "string"
+    },
+    "Real Face": {
+      "type": "string"
+    },
+    "Release Clause": {
+      "type": "string"
+    },
+    "teams": {
+      "type": "object",
+      "properties": {
+        "/": {}
+      },
+      "patternProperties": {
+        "^(/w+ ?)*$": { "type": "integer" }
+      },
+      "additionalProperties": false
+    },
+    "attacking": {
+      "type": "object",
+      "properties": {
+        "Crossing": {
+          "type": "integer"
+        },
+        "Finishing": {
+          "type": "integer"
+        },
+        "HeadingAccuracy": {
+          "type": "integer"
+        },
+        "ShortPassing": {
+          "type": "integer"
+        },
+        "Volleys": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Crossing",
+        "Finishing",
+        "HeadingAccuracy",
+        "ShortPassing",
+        "Volleys"
+      ]
+    },
+    "skill": {
+      "type": "object",
+      "properties": {
+        "Dribbling": {
+          "type": "integer"
+        },
+        "Curve": {
+          "type": "integer"
+        },
+        "FKAccuracy": {
+          "type": "integer"
+        },
+        "LongPassing": {
+          "type": "integer"
+        },
+        "BallControl": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Dribbling",
+        "Curve",
+        "FKAccuracy",
+        "LongPassing",
+        "BallControl"
+      ]
+    },
+    "movement": {
+      "type": "object",
+      "properties": {
+        "Acceleration": {
+          "type": "integer"
+        },
+        "SprintSpeed": {
+          "type": "integer"
+        },
+        "Agility": {
+          "type": "integer"
+        },
+        "Reactions": {
+          "type": "integer"
+        },
+        "Balance": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Acceleration",
+        "SprintSpeed",
+        "Agility",
+        "Reactions",
+        "Balance"
+      ]
+    },
+    "power": {
+      "type": "object",
+      "properties": {
+        "ShotPower": {
+          "type": "integer"
+        },
+        "Jumping": {
+          "type": "integer"
+        },
+        "Stamina": {
+          "type": "integer"
+        },
+        "Strength": {
+          "type": "integer"
+        },
+        "LongShots": {
+          "type": "integer"
+        }
+      },
+      "required": ["ShotPower", "Jumping", "Stamina", "Strength", "LongShots"]
+    },
+    "mentality": {
+      "type": "object",
+      "properties": {
+        "Aggression": {
+          "type": "integer"
+        },
+        "Interceptions": {
+          "type": "integer"
+        },
+        "Positioning": {
+          "type": "integer"
+        },
+        "Vision": {
+          "type": "integer"
+        },
+        "Penalties": {
+          "type": "integer"
+        },
+        "Composure": {
+          "type": ["integer", "null"]
+        }
+      },
+      "required": [
+        "Aggression",
+        "Interceptions",
+        "Positioning",
+        "Vision",
+        "Penalties",
+      ]
+    },
+    "defending": {
+      "type": "object",
+      "properties": {
+        "DefensiveAwareness": {
+          "type": "integer"
+        },
+        "StandingTackle": {
+          "type": "integer"
+        },
+        "SlidingTackle": {
+          "type": "integer"
+        }
+      },
+      "required": ["DefensiveAwareness", "StandingTackle", "SlidingTackle"]
+    },
+    "goalkeeping": {
+      "type": "object",
+      "properties": {
+        "GKDiving": {
+          "type": "integer"
+        },
+        "GKHandling": {
+          "type": "integer"
+        },
+        "GKKicking": {
+          "type": "integer"
+        },
+        "GKPositioning": {
+          "type": "integer"
+        },
+        "GKReflexes": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "GKDiving",
+        "GKHandling",
+        "GKKicking",
+        "GKPositioning",
+        "GKReflexes"
+      ]
+    },
+    "player_traits": {
+      "type": "array",
+      "items": {
+        "type": ["string", "null"]
+      }
+    },
+    "player_hashtags": {
+      "type": "array",
+      "items": {
+        "type": ["string", "null"]
+      }
+    },
+    "logos": {
+      "type": "object",
+      "properties": {
+        "country": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": ["string", "null"]
+            },
+            "url": {
+              "type": ["string", "null"]
+            }
+          },
+          "required": ["name", "url"]
+        },
+        "club": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": ["string", "null"]
+            },
+            "url": {
+              "type": ["string", "null"]
+            }
+          },
+          "required": ["name", "url"]
+        },
+        "nationalClub": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": ["string", "null"]
+            },
+            "url": {
+              "type": ["string", "null"]
+            }
+          },
+          "required": ["name", "url"]
+        }
+      },
+      "required": ["country", "club", "nationalClub"]
+    }
+  },
+  "required": [
+    "id",
+    "name",
+    "short_name",
+    "photo_url",
+    "primary_position",
+    "positions",
+    "age",
+    "birth_date",
+    "height",
+    "weight",
+    "Overall Rating",
+    "Potential",
+    "Value",
+    "Wage",
+    "Preferred Foot",
+    "Weak Foot",
+    "Skill Moves",
+    "International Reputation",
+    "Work Rate",
+    "Body Type",
+    "Real Face",
+    "Release Clause",
+    "teams",
+    "attacking",
+    "skill",
+    "movement",
+    "power",
+    "mentality",
+    "defending",
+    "goalkeeping",
+    "player_traits",
+    "player_hashtags",
+    "logos"
+  ]
+}
