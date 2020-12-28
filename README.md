@@ -45,7 +45,7 @@ chmod +x ./run.sh
 
 - First run the URL spider (To get all players urls)
   ```bash
-  scrapy crawl players_url
+  scrapy crawl players_urls
   ```
 
 - After successfull, run the stats spider (To get the players statistics from URLs from above)
