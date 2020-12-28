@@ -18,9 +18,18 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
 
 # Steps to run the project
 
+## Easy Run
+
+```
+chmod +x ./run.sh
+./run.sh
+```
+
+## Manual Setup and Run
+
 - Setup virtualenv (optional, but recommended)
   ```
-  virtualenv -p python3.6 env
+  virtualenv -p python3.8 env
   source env/bin/activate
   ```
 - Install project dependencies <br>
@@ -30,19 +39,19 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
   ```
 
 - Run the crawler with _./fifa-crawler_ as current directory (This the main scrapy crawler directory)
+  ```
+  cd fifa_crawler
+  ```
 
-  Make sure to change the filenames to read and write appropriately: <br/> 
-  > `players_url.json` --> scraping urls <br/> 
-  > `players_stats_raw.json` --> scraping player stats
+- First run the URL spider (To get all players urls)
+  ```bash
+  scrapy crawl players_url
+  ```
 
-  - First run the URL spider (To get all players urls)
-    ```python
-    scrapy crawl players_url
-    ```
-  - After successfull, run the stats spider (To get the players statistics from URLs from above)
-    ```python
-    scrapy crawl players_stats
-    ```
+- After successfull, run the stats spider (To get the players statistics from URLs from above)
+  ```bash
+  scrapy crawl players_stats
+  ```
 
 # Scope/Aim as an indiviual project
 
@@ -53,6 +62,443 @@ Further exported to the [Football Draft Backend](https://github.com/sauravhirema
 - Add analysis projects on the crawled data.
 - Update the crawler to perform scraping to obtain _Teams_ data (currently player-data)
 - Improve speed of the crawler
+
+# Metadata
+
+<details>
+  <summary>Click here to expand meta view, or <a href="https://github.com/sauravhiremath/fifa-stats-crawler/blob/master/data/meta/meta.md">go-here</a> for a detailed view</summary>
+
+  <details>
+  <summary>id</summary>
+
+  * **type**: string
+
+  * **example**: "158023"
+  </details>
+
+  <details>
+  <summary>name</summary>
+
+  * **type**: string
+
+  * **example**: "Lionel Andrés Messi Cuccittini"
+  </details>
+
+  <details>
+  <summary>short_name</summary>
+
+  * **type**: string
+
+  * **example**: "L. Messi"
+  </details>
+
+  <details>
+  <summary>photo_url</summary>
+
+  * **type**: string
+
+  * **example**: "https://cdn.sofifa.com/players/158/023/21_120.png"
+  </details>
+
+  <details>
+  <summary>primary_position</summary>
+
+  * **type**: string
+
+  * **example**: "RW"
+  </details>
+
+  <details>
+  <summary>positions</summary>
+
+  * **type**: string[]
+
+  * **example**: ["RW", "ST", "CF"]
+  </details>
+
+  <details>
+  <summary>age</summary>
+
+  * **type**: string
+
+  * **example**: "33"
+  </details>
+
+  <details>
+  <summary>birth_date</summary>
+
+  * **type**: string (DateFormat is `YYYY/MONTH_NAME_SHORT/DD`)
+
+  * **example**: "1987/Jun/24"
+  </details>
+
+  <details>
+  <summary>height</summary>
+
+  * **type**: integer (in cms)
+
+  * **example**: 170
+  </details>
+
+  <details>
+  <summary>weight</summary>
+
+  * **type**: integer (in kg)
+
+  * **example**: 72
+  </details>
+
+  <details>
+  <summary>Overall Rating</summary>
+
+  * **type**: integer
+
+  * **example**: 93
+  </details>
+
+  <details>
+  <summary>Potential</summary>
+
+  * **type**: integer
+
+  * **example**: 93
+  </details>
+
+  <details>
+  <summary>Value</summary>
+
+  * **type**: string (in euros)
+
+  * **example**: "€103.5M"
+  </details>
+
+  <details>
+  <summary>Wage</summary>
+
+  * **type**: string (in euros)
+
+  * **example**: "€560K"
+  </details>
+
+  <details>
+  <summary>Preferred Foot</summary>
+
+  * **type**: enum["Left", "Right"]
+
+  * **example**: "Left"
+  </details>
+
+  <details>
+  <summary>Weak Foot</summary>
+
+  * **type**: integer (range 1-5)
+
+  * **example**: 4
+  </details>
+
+  <details>
+  <summary>Skill Moves</summary>
+
+  * **type**: integer (range 1-5)
+
+  * **example**: 4
+  </details>
+
+  <details>
+  <summary>International Reputation</summary>
+
+  * **type**: integer (range 0-5)
+
+  * **example**: 5
+  </details>
+
+  <details>
+  <summary>Work Rate</summary>
+
+  * **type**: enum["Medium/Low"]
+
+  * **example**: "Medium/Low"
+  </details>
+
+  <details>
+  <summary>Body Type</summary>
+
+  * **type**: enum["Unique"]
+
+  * **example**: "Unique"
+  </details>
+
+  <details>
+  <summary>Real Face</summary>
+
+  * **type**: enum["Yes", "No"]
+
+  * **example**: "Yes"
+  </details>
+
+  <details>
+  <summary>Release Clause</summary>
+
+  * **type**: string (in euros)
+
+  * **example**: "€212.2M"
+  </details>
+
+  <details>
+  <summary>teams</summary>
+
+  * **type**: map<string, integer> (including international and domestic clubs)
+
+  * **example**: 
+  ```json
+  {
+    "FC Barcelona": 84,
+    "Argentina": 83
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>attacking</summary>
+
+  * **type**: map<attackOptions, integer>
+
+  <details>
+  <summary>attackOptions</summary>
+
+  * **type**: enum["Crossing", "Finishing", "HeadingAccuracy", "ShortPassing", "Volleys"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "Crossing": 85,
+      "Finishing": 95,
+      "HeadingAccuracy": 70,
+      "ShortPassing": 91,
+      "Volleys": 88
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>skill</summary>
+
+  * **type**: map<skillOptions, integer>
+  <details>
+  <summary>skillOptions</summary>
+
+  * **type**: enum["Dribbling", "Curve", "FKAccuracy", "LongPassing", "BallControl"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "Dribbling": 96,
+      "Curve": 93,
+      "FKAccuracy": 94,
+      "LongPassing": 91,
+      "BallControl": 96
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>movement</summary>
+
+  * **type**: map<movementOptions, integer>
+
+  <details>
+    <summary>movementOptions</summary>
+
+    * **type**: enum["Acceleration", "SprintSpeed", "Agility", "Reactions", "Balance"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "Acceleration": 91,
+      "SprintSpeed": 80,
+      "Agility": 91,
+      "Reactions": 94,
+      "Balance": 95
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>power</summary>
+
+  * **type**: map<powerOptions, integer>
+
+  <details>
+    <summary>powerOptions</summary>
+    
+    * **type**: enum["ShotPower", "Jumping", "Stamina", "Strength", "LongShots"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "ShotPower": 86,
+      "Jumping": 68,
+      "Stamina": 72,
+      "Strength": 69,
+      "LongShots": 94
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>mentality</summary>
+
+  * **type**: map<mentalityOptions, integer>
+
+  <details>
+    <summary>mentalityOptions</summary>
+
+    * **type**: enum["Aggression", "Interceptions", "Positioning", "Vision", "Penalties", "Composure"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "Aggression": 44,
+      "Interceptions": 40,
+      "Positioning": 93,
+      "Vision": 95,
+      "Penalties": 75,
+      "Composure": 96
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>defending</summary>
+
+  * **type**: map<defendingOptions, integer>
+
+  <details>
+    <summary>defendingOptions</summary>
+
+    * **type**: enum["DefensiveAwareness", "StandingTackle", "SlidingTackle"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "DefensiveAwareness": 32,
+      "StandingTackle": 35,
+      "SlidingTackle": 24
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>goalkeeping</summary>
+
+  * **type**: map<goalkeepingOptions, integer>
+
+  <details>
+    <summary>goalkeepingOptions</summary>
+
+    * **type**: enum["GKDiving", "GKHandling", "GKKicking", "GKPositioning", "GKReflexes"]
+  </details>
+
+  * **example**: 
+  ```json
+  {
+      "GKDiving": 6,
+      "GKHandling": 11,
+      "GKKicking": 15,
+      "GKPositioning": 14,
+      "GKReflexes": 8
+  }
+  ```
+  </details>
+
+  <details>
+  <summary>player_traits</summary>
+
+  * **type**: string[]
+
+  * **example**: 
+  ```json
+  [
+      "Finesse Shot",
+      "Long Shot Taker (AI)",
+      "Speed Dribbler (AI)",
+      "Playmaker (AI)",
+      "Outside Foot Shot",
+      "One Club Player",
+      "Team Player",
+      "Chip Shot (AI)"
+  ]
+  ```
+  </details>
+
+  <details>
+  <summary>player_hashtags</summary>
+
+  * **type**: string[] (Each tag starts with `#`)
+
+  **example**:
+  ```json
+  [
+      "#Dribbler",
+      "#Distance Shooter",
+      "#FK Specialist",
+      "#Acrobat",
+      "#Clinical Finisher",
+      "#Complete Forward"
+  ]
+  ```
+  </details>
+
+  <details>
+  <summary>logos</summary>
+
+  * **type**: map<groupNames, logoAttributes>
+
+  <details>
+  <summary>groupNames</summary>
+
+  * **type**: enum["country", "club", "nationalClub"]
+  </details>
+  
+  <details>
+  <summary>logoAttributes</summary>
+
+  * **type**: map<enum["name", "url"], string>
+  
+  * **logoAttributes examples**:
+  ```json
+  {
+      "name": "Argentina",
+      "url": "https://cdn.sofifa.com/flags/ar.png"
+  }
+  ```
+  </details>
+
+  * **examples**:
+  ```json
+  {
+      "country": {
+        "name": "Argentina",
+        "url": "https://cdn.sofifa.com/flags/ar.png"
+      },
+      "club": {
+        "name": "FC Barcelona",
+        "url": "https://cdn.sofifa.com/teams/241/60.png"
+      },
+      "nationalClub": {
+        "name": "Argentina",
+        "url": "https://cdn.sofifa.com/teams/1369/60.png"
+      }
+  }
+  ```
+  </details>
+</details>
 
 # Contributing tot the Project
 
