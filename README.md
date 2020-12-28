@@ -223,7 +223,7 @@ chmod +x ./run.sh
   <details>
   <summary>Body Type</summary>
 
-  * **type**: enum["Unique"]
+  * **type**: enum["Unique", "Normal (170-185)", "Normal (185+)", "Lean (170-185)", "Lean (185+)", "Stocky (170-185)", "Normal (170-)", "Stocky (185+)", "Stocky (185+)", "Stocky (170-)", ]
 
   * **example**: "Unique"
   </details>
@@ -252,8 +252,8 @@ chmod +x ./run.sh
   * **example**: 
   ```json
   {
-    "FC Barcelona": 84,
-    "Argentina": 83
+  "FC Barcelona": 84,
+  "Argentina": 83
   }
   ```
   </details>
@@ -309,9 +309,9 @@ chmod +x ./run.sh
   * **type**: map<movementOptions, integer>
 
   <details>
-    <summary>movementOptions</summary>
+  <summary>movementOptions</summary>
 
-    * **type**: enum["Acceleration", "SprintSpeed", "Agility", "Reactions", "Balance"]
+  * **type**: enum["Acceleration", "SprintSpeed", "Agility", "Reactions", "Balance"]
   </details>
 
   * **example**: 
@@ -332,9 +332,9 @@ chmod +x ./run.sh
   * **type**: map<powerOptions, integer>
 
   <details>
-    <summary>powerOptions</summary>
-    
-    * **type**: enum["ShotPower", "Jumping", "Stamina", "Strength", "LongShots"]
+  <summary>powerOptions</summary>
+
+  * **type**: enum["ShotPower", "Jumping", "Stamina", "Strength", "LongShots"]
   </details>
 
   * **example**: 
@@ -355,9 +355,9 @@ chmod +x ./run.sh
   * **type**: map<mentalityOptions, integer>
 
   <details>
-    <summary>mentalityOptions</summary>
+  <summary>mentalityOptions</summary>
 
-    * **type**: enum["Aggression", "Interceptions", "Positioning", "Vision", "Penalties", "Composure"]
+  * **type**: enum["Aggression", "Interceptions", "Positioning", "Vision", "Penalties", "Composure"]
   </details>
 
   * **example**: 
@@ -379,9 +379,9 @@ chmod +x ./run.sh
   * **type**: map<defendingOptions, integer>
 
   <details>
-    <summary>defendingOptions</summary>
+  <summary>defendingOptions</summary>
 
-    * **type**: enum["DefensiveAwareness", "StandingTackle", "SlidingTackle"]
+  * **type**: enum["DefensiveAwareness", "StandingTackle", "SlidingTackle"]
   </details>
 
   * **example**: 
@@ -400,9 +400,9 @@ chmod +x ./run.sh
   * **type**: map<goalkeepingOptions, integer>
 
   <details>
-    <summary>goalkeepingOptions</summary>
+  <summary>goalkeepingOptions</summary>
 
-    * **type**: enum["GKDiving", "GKHandling", "GKKicking", "GKPositioning", "GKReflexes"]
+  * **type**: enum["GKDiving", "GKHandling", "GKKicking", "GKPositioning", "GKReflexes"]
   </details>
 
   * **example**: 
@@ -420,7 +420,7 @@ chmod +x ./run.sh
   <details>
   <summary>player_traits</summary>
 
-  * **type**: string[]
+  * **type**: string["Technical Dribbler (AI)","Long Shot Taker (AI)","Flair","Speed Dribbler (AI)","Injury Prone","Long Passer (AI)","Playmaker (AI)","Power Header","Dives Into Tackles (AI)","Outside Foot Shot","Team Player","Finesse Shot","Leadership","Solid Player","Early Crosser","Long Throw-in","Comes For Crosses","Power Free-Kick","GK Long Throw","Cautious With Crosses","Rushes Out Of Goal","Saves with Feet","Chip Shot (AI)","Giant Throw-in","One Club Player"]
 
   * **example**: 
   ```json
@@ -440,7 +440,7 @@ chmod +x ./run.sh
   <details>
   <summary>player_hashtags</summary>
 
-  * **type**: string[] (Each tag starts with `#`)
+  * **type**: string["#Strength","#Acrobat","#Engine","#Speedster","#Dribbler","#Aerial Threat","#Tactician","#FK Specialist","#Crosser","#Distance Shooter","#Clinical Finisher","#Playmaker","#Tackling","#Complete Midfielder","#Complete Forward","#Poacher","#Complete Defender"] (Each tag starts with `#`)
 
   **example**:
   ```json
@@ -465,12 +465,12 @@ chmod +x ./run.sh
 
   * **type**: enum["country", "club", "nationalClub"]
   </details>
-  
+
   <details>
   <summary>logoAttributes</summary>
 
   * **type**: map<enum["name", "url"], string>
-  
+
   * **logoAttributes examples**:
   ```json
   {
@@ -484,16 +484,16 @@ chmod +x ./run.sh
   ```json
   {
       "country": {
-        "name": "Argentina",
-        "url": "https://cdn.sofifa.com/flags/ar.png"
+      "name": "Argentina",
+      "url": "https://cdn.sofifa.com/flags/ar.png"
       },
       "club": {
-        "name": "FC Barcelona",
-        "url": "https://cdn.sofifa.com/teams/241/60.png"
+      "name": "FC Barcelona",
+      "url": "https://cdn.sofifa.com/teams/241/60.png"
       },
       "nationalClub": {
-        "name": "Argentina",
-        "url": "https://cdn.sofifa.com/teams/1369/60.png"
+      "name": "Argentina",
+      "url": "https://cdn.sofifa.com/teams/1369/60.png"
       }
   }
   ```

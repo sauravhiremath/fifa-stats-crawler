@@ -155,7 +155,7 @@
 <details open>
 <summary>Body Type</summary>
 
-* **type**: enum["Unique"]
+* **type**: enum["Unique", "Normal (170-185)", "Normal (185+)", "Lean (170-185)", "Lean (185+)", "Stocky (170-185)", "Normal (170-)", "Stocky (185+)", "Stocky (185+)", "Stocky (170-)", ]
 
 * **example**: "Unique"
 </details>
@@ -352,7 +352,7 @@
 <details open>
 <summary>player_traits</summary>
 
-* **type**: string[]
+* **type**: string["Technical Dribbler (AI)","Long Shot Taker (AI)","Flair","Speed Dribbler (AI)","Injury Prone","Long Passer (AI)","Playmaker (AI)","Power Header","Dives Into Tackles (AI)","Outside Foot Shot","Team Player","Finesse Shot","Leadership","Solid Player","Early Crosser","Long Throw-in","Comes For Crosses","Power Free-Kick","GK Long Throw","Cautious With Crosses","Rushes Out Of Goal","Saves with Feet","Chip Shot (AI)","Giant Throw-in","One Club Player"]
 
 * **example**: 
 ```json
@@ -372,7 +372,7 @@
 <details open>
 <summary>player_hashtags</summary>
 
-* **type**: string[] (Each tag starts with `#`)
+* **type**: string["#Strength","#Acrobat","#Engine","#Speedster","#Dribbler","#Aerial Threat","#Tactician","#FK Specialist","#Crosser","#Distance Shooter","#Clinical Finisher","#Playmaker","#Tackling","#Complete Midfielder","#Complete Forward","#Poacher","#Complete Defender"] (Each tag starts with `#`)
 
 **example**:
 ```json
