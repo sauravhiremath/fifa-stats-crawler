@@ -7,7 +7,7 @@ class SofifaSpider(scrapy.Spider):
     name='players_stats'
 
     def __init__(self):
-        with open('../data/json/players_urls.json') as json_data:
+        with open('../data/json/players_url_dev.json') as json_data:
             self.players = json.load(json_data)
         self.player_count = 1
 
@@ -21,9 +21,9 @@ class SofifaSpider(scrapy.Spider):
 
     def parse(self, response):
         for player in response.css('.info'):
+            player_id = player.xpath('//div[@class="card" and h5="Profile"]//li[label = "ID"]/text()').get()
             player_short_name = player.xpath('//div[@class="flex-centered header"]//h1/text()').get()
             player_name_info = player.xpath('//div[@class="info"]/h1/text()').get()
-            player_id = player_name_info.split('(')[1].split(' ')[1].strip(')')
             player_name = player_name_info.split('(')[0].strip()
             player_info = player.xpath('//div[@class="meta bp3-text-overflow-ellipsis"]/text()').getall()
             player_info = [info for info in player_info if info != ' ']
@@ -51,6 +51,9 @@ class SofifaSpider(scrapy.Spider):
             player_profile_values = [val for val in player_profile_values if val != ' ']
             player_profile_values = player_profile_values + (player.xpath('//div[@class="card" and h5="Profile"]//li/span[not (@class)]/text()').getall())
 
+            # Add player most played position
+            player_primary_position = player.xpath('//li[@class="bp3-text-overflow-ellipsis"]/span[contains(@class, "pos")]/text()').get()
+
             # Add player specialities (#Acrobat, #Dribbler) and Traits (Finesse shot, Playmaker)
             player_tags = player.xpath('//div[@class="card" and h5="Player Specialities"]//ul//li//a/text()').getall()
             player_traits = player.xpath('//div[@class="card" and h5="Traits"]//ul//li//text()').getall()
@@ -58,8 +61,8 @@ class SofifaSpider(scrapy.Spider):
             # Add player club photo url and country photo url
             player_country = player.xpath('//div[@class="meta bp3-text-overflow-ellipsis"]/a/@title').get()
             player_country_logo_url = player.xpath('//div[@class="meta bp3-text-overflow-ellipsis"]//img/@data-src').get()
-            player_clubs_list = player.xpath('//div[@class="player-card double-spacing"]//h5/a/text()').getall()
-            player_logos_list = player.xpath('//div[@class="player-card double-spacing"]//img/@data-src').getall()
+            player_clubs_list = player.xpath('//div[@class="card"]//h5/a/text()').getall()
+            player_logos_list = player.xpath('//div[@class="card"]//img/@data-src').getall()
             player_logos_urls = {}
             country = {'name': player_country, 'url': player_country_logo_url}
             player_logos_urls.update({'country': country})
@@ -71,8 +74,6 @@ class SofifaSpider(scrapy.Spider):
                     club = {'name': k, 'url': v}
                     player_logos_urls.update({'club': club})
 
-            # Add player most played position
-            player_primary_position = player.xpath('//div[@class="columns right"]/div[@class="column col-4"]//div[@class="double-spacing"]//span/text()').get()
 
 
             ###########################################################
@@ -107,10 +108,11 @@ class SofifaSpider(scrapy.Spider):
             goalkeeping = {'goalkeeping':{k.replace(' ', ''):int(v) for k, v in zip(player_stats[29:], player_stats_values[29:])}}
 
             player_info_dict = {
+                    'id': player_id,
                     'name': player_name,
                     'short_name': player_short_name,
-                    'id': player_id,
                     'photo_url': player_url_photo,
+                    'primary_position': player_primary_position,
                     'positions': [position for position in player_info[1:] if position.isupper()],
                     'age': age,
                     'birth_date': '{}/{}/{}'.format(year, month, day),
@@ -133,8 +135,6 @@ class SofifaSpider(scrapy.Spider):
             player_info_dict.update(player_hashtags)
             player_logos_dict = {'logos': player_logos_urls}
             player_info_dict.update(player_logos_dict)
-            player_best_pos_dict = {'primary_position': player_primary_position}
-            player_info_dict.update(player_best_pos_dict)
 
             logging.info('*******************  ' + str(self.player_count) + '  *******************' + '\n\n\n')
             yield player_info_dict
