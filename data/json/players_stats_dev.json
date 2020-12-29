@@ -1,0 +1,288 @@
+[
+  {
+    "id": "158023",
+    "name": "Lionel Andrés Messi Cuccittini",
+    "short_name": "L. Messi",
+    "photo_url": "https://cdn.sofifa.com/players/158/023/21_120.png",
+    "primary_position": "RW",
+    "positions": ["RW", "ST", "CF"],
+    "age": "33",
+    "birth_date": "1987/Jun/24",
+    "height": 170,
+    "weight": 72,
+    "Overall Rating": 93,
+    "Potential": 93,
+    "Value": "€103.5M",
+    "Wage": "€560K",
+    "Preferred Foot": "Left",
+    "Weak Foot": 4,
+    "Skill Moves": 4,
+    "International Reputation": 5,
+    "Work Rate": "Medium/ Low",
+    "Body Type": "Unique",
+    "Real Face": "Yes",
+    "Release Clause": "€212.2M",
+    "teams": { "FC Barcelona": 84, "Argentina": 83 },
+    "attacking": {
+      "Crossing": 85,
+      "Finishing": 95,
+      "HeadingAccuracy": 70,
+      "ShortPassing": 91,
+      "Volleys": 88
+    },
+    "skill": {
+      "Dribbling": 96,
+      "Curve": 93,
+      "FKAccuracy": 94,
+      "LongPassing": 91,
+      "BallControl": 96
+    },
+    "movement": {
+      "Acceleration": 91,
+      "SprintSpeed": 80,
+      "Agility": 91,
+      "Reactions": 94,
+      "Balance": 95
+    },
+    "power": {
+      "ShotPower": 86,
+      "Jumping": 68,
+      "Stamina": 72,
+      "Strength": 69,
+      "LongShots": 94
+    },
+    "mentality": {
+      "Aggression": 44,
+      "Interceptions": 40,
+      "Positioning": 93,
+      "Vision": 95,
+      "Penalties": 75,
+      "Composure": 50
+    },
+    "defending": {
+      "DefensiveAwareness": 96,
+      "StandingTackle": 32,
+      "SlidingTackle": 35
+    },
+    "goalkeeping": {
+      "GKDiving": 24,
+      "GKHandling": 6,
+      "GKKicking": 11,
+      "GKPositioning": 15,
+      "GKReflexes": 14
+    },
+    "player_traits": [
+      "Finesse Shot",
+      "Long Shot Taker (AI)",
+      "Speed Dribbler (AI)",
+      "Playmaker (AI)",
+      "Outside Foot Shot",
+      "One Club Player",
+      "Team Player",
+      "Chip Shot (AI)"
+    ],
+    "player_hashtags": [
+      "#Dribbler",
+      "#Distance Shooter",
+      "#FK Specialist",
+      "#Acrobat",
+      "#Clinical Finisher",
+      "#Complete Forward"
+    ],
+    "logos": {
+      "country": {
+        "name": "Argentina",
+        "url": "https://cdn.sofifa.com/flags/ar.png"
+      },
+      "club": {
+        "name": "FC Barcelona",
+        "url": "https://cdn.sofifa.com/teams/241/60.png"
+      },
+      "nationalClub": {
+        "name": "Argentina",
+        "url": "https://cdn.sofifa.com/teams/1369/60.png"
+      }
+    }
+  },
+  {
+    "id": "246",
+    "name": "Paul Scholes",
+    "short_name": "P. Scholes",
+    "photo_url": "https://cdn.sofifa.com/players/000/246/13_120.png",
+    "primary_position": "CAM",
+    "positions": ["CM", "CDM"],
+    "age": "37",
+    "birth_date": "1974/Nov/16",
+    "height": 171,
+    "weight": 71,
+    "Overall Rating": 80,
+    "Potential": 80,
+    "Value": "€400K",
+    "Wage": "€40K",
+    "Preferred Foot": "Right",
+    "Weak Foot": 3,
+    "Skill Moves": 3,
+    "International Reputation": 2,
+    "Work Rate": "Medium/ Medium",
+    "Body Type": "Normal (170-)",
+    "Real Face": "Yes",
+    "teams": { "Manchester United": 82 },
+    "attacking": {
+      "Crossing": 83,
+      "Finishing": 65,
+      "HeadingAccuracy": 72,
+      "ShortPassing": 89,
+      "Volleys": 85
+    },
+    "skill": {
+      "Dribbling": 75,
+      "Curve": 74,
+      "FKAccuracy": 67,
+      "LongPassing": 90,
+      "BallControl": 87
+    },
+    "movement": {
+      "Acceleration": 53,
+      "SprintSpeed": 53,
+      "Agility": 68,
+      "Reactions": 82,
+      "Balance": 82
+    },
+    "power": {
+      "ShotPower": 88,
+      "Jumping": 64,
+      "Stamina": 34,
+      "Strength": 63,
+      "LongShots": 84
+    },
+    "mentality": {
+      "Aggression": 87,
+      "Interceptions": 79,
+      "Positioning": 83,
+      "Vision": 91,
+      "Penalties": 77,
+      "Composure": 58
+    },
+    "defending": { "Marking": 49, "StandingTackle": 36, "SlidingTackle": 7 },
+    "goalkeeping": {
+      "GKDiving": 12,
+      "GKHandling": 5,
+      "GKKicking": 15,
+      "GKPositioning": 8
+    },
+    "player_traits": [
+      "Dives Into Tackles (AI)",
+      "Long Passer (AI)",
+      "Playmaker (AI)",
+      "One Club Player",
+      "Team Player"
+    ],
+    "player_hashtags": ["#Playmaker "],
+    "logos": {
+      "country": {
+        "name": "England",
+        "url": "https://cdn.sofifa.com/flags/gb-eng.png"
+      },
+      "club": {
+        "name": "Manchester United",
+        "url": "https://cdn.sofifa.com/teams/11/60.png"
+      }
+    }
+  },
+  {
+    "id": "202126",
+    "name": "Harry Kane",
+    "short_name": "H. Kane",
+    "photo_url": "https://cdn.sofifa.com/players/202/126/21_120.png",
+    "primary_position": "ST",
+    "positions": ["ST"],
+    "age": "26",
+    "birth_date": "1993/Jul/28",
+    "height": 188,
+    "weight": 89,
+    "Overall Rating": 89,
+    "Potential": 90,
+    "Value": "€123M",
+    "Wage": "€230K",
+    "Preferred Foot": "Right",
+    "Weak Foot": 5,
+    "Skill Moves": 3,
+    "International Reputation": 3,
+    "Work Rate": "High/ High",
+    "Body Type": "Unique",
+    "Real Face": "Yes",
+    "Release Clause": "€242.9M",
+    "teams": { "Tottenham Hotspur": 82, "England": 83 },
+    "attacking": {
+      "Crossing": 75,
+      "Finishing": 94,
+      "HeadingAccuracy": 86,
+      "ShortPassing": 84,
+      "Volleys": 85
+    },
+    "skill": {
+      "Dribbling": 81,
+      "Curve": 83,
+      "FKAccuracy": 68,
+      "LongPassing": 86,
+      "BallControl": 85
+    },
+    "movement": {
+      "Acceleration": 66,
+      "SprintSpeed": 69,
+      "Agility": 69,
+      "Reactions": 90,
+      "Balance": 73
+    },
+    "power": {
+      "ShotPower": 91,
+      "Jumping": 79,
+      "Stamina": 84,
+      "Strength": 84,
+      "LongShots": 86
+    },
+    "mentality": {
+      "Aggression": 81,
+      "Interceptions": 44,
+      "Positioning": 93,
+      "Vision": 86,
+      "Penalties": 91,
+      "Composure": 50
+    },
+    "defending": {
+      "DefensiveAwareness": 91,
+      "StandingTackle": 63,
+      "SlidingTackle": 36
+    },
+    "goalkeeping": {
+      "GKDiving": 38,
+      "GKHandling": 8,
+      "GKKicking": 10,
+      "GKPositioning": 11,
+      "GKReflexes": 14
+    },
+    "player_traits": [
+      "Leadership",
+      "Long Passer (AI)",
+      "Long Shot Taker (AI)",
+      "Playmaker (AI)",
+      "Outside Foot Shot",
+      "Team Player"
+    ],
+    "player_hashtags": ["#Distance Shooter", "#Clinical Finisher"],
+    "logos": {
+      "country": {
+        "name": "England",
+        "url": "https://cdn.sofifa.com/flags/gb-eng.png"
+      },
+      "club": {
+        "name": "Tottenham Hotspur",
+        "url": "https://cdn.sofifa.com/teams/18/60.png"
+      },
+      "nationalClub": {
+        "name": "England",
+        "url": "https://cdn.sofifa.com/teams/1318/60.png"
+      }
+    }
+  }
+]
