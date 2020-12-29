@@ -34,16 +34,14 @@ class SofifaSpider(scrapy.Spider):
             player_url_photo = player.xpath('//div[@class="bp3-card player" ]//img/@data-src').getall()[0]
 
             # Add stats_names and values (Crossing, finishing) + goalkeeper stats_names and values (GK Diving, GK Reflexes)
-            total_stats_fields = 34;
-            player_stats = player.xpath('//div[@class="card"]//ul//li/span[2]//text()').re(r'[\w ]+')
+            player_stats = player.xpath('//div[@class="card"]//ul//li/span[2]//text()').re(r'[a-zA-Z ]+')
+            player_stats.insert(-3, "Composure")
+            player_stats = player_stats + player.xpath('//div[@class="card" and h5="Goalkeeping"]//ul//li/text()').getall()
+            player_stats_values = player.xpath('//div[@class="card" and h5 !="Profile" and h5 != "Traits" and not(img)]/ul//li/span[1]//text()').getall()
+            # Compensating for the missing "Composure" field
             _player_composure_value = player.xpath('//div[@class="card"]//ul//li[text()=" Composure"]/text()').get()
             if _player_composure_value != None:
-                player_stats.insert(-3, _player_composure_value[1:]) 
-            else:
-                player_stats.insert(-3, 50)
-                total_stats_fields -= 1
-            player_stats = player_stats + player.xpath('//div[@class="card" and h5="Goalkeeping"]//ul//li/text()').getall()
-            player_stats_values = player.xpath('//div[@class="card" and h5 !="Profile" and h5 != "Traits"]/ul//li/span[1]//text()').getall()[-total_stats_fields:]
+                player_stats_values.insert(25, 50)           
 
             # Overall rating, potential rating + value, wage names and values
             primary_stats = player.xpath('//div[@class="sub"]//text()').getall()
