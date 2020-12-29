@@ -1,3 +1,9 @@
 .vscode
 env
 __pycache__
+
+# Data
+
+data/json/players_stats.json
+data/json/players_stats_dataflow_compatible.json
+data/json/players_urls.json
